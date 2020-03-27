@@ -507,6 +507,27 @@ let lengthTable = table.length;
      return Cumul;
  }
 
+// Calcul Cumul Nombre d'abonnés au noeud
+// Création d'un tableau des Cumuls en fonctions du noeud.
+function TabCumul()
+{
+    let TabCumul // Tableau où seront stockés les Cumul du nombre d'abonnés au noeud
+    // Tableau à deux colonnes "NumNoeud" et CumulAbonnes"
+    //Tableau bati à partir du dernier noeud au premier
+    let Cumul;
+    for (let i= Max-1; i>=0 ; i--)
+    {
+       Cumul = Tab[i].NombreAbonnesNoeud;
+       for (let j= Max-1;j>i; j--)
+       {
+           if Tab[i].NumNoeudActuel === Tab[j].NumNoeudAmont
+           {
+               Cumul += Tab[j].NombreAbonneNoeud
+           }
+       }
+        TabCumul += {Tab[i].NumNoeudActuel,Cumul};
+    }
+}
  function CumulPuissanceFoisonnee(kf,i,colName){
      let cumul = Cumul(i,colName);
      let res = kf*cumul*P0;
